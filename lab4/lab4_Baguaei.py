@@ -24,7 +24,7 @@ contacts['Peter'] = '888-000-1111'
 
 print(f"updated dictionary with new pair = {contacts}")
 
-print("---- Example 12: Loop through a dictionary ")
+print("---- Example 2: Loop through a dictionary ")
 # for loop to print each key in the dictionary
 for v in contacts:
     print(v)
