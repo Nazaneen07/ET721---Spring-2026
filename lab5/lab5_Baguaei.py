@@ -30,3 +30,19 @@ distance = calculate_distance(x1,x2,y1,y2)
 print_distance(x1,x2,y1,y2,distance)
 
 print('\nEXERCISE')
+
+# constant guess number
+GUESS_NUM = 5
+
+# generate random number
+rand_num = generate_random(1, 10)
+
+# testing
+print(f"random number = {rand_num}")
+print(f"guess number = {GUESS_NUM}")
+
+# compare numbers
+compare_number(GUESS_NUM, rand_num)
+
+
+
