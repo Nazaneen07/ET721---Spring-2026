@@ -69,6 +69,36 @@ print(f"{contacts}")
 
 print("\n ----- EXCERCISE ")
 
+# list of users
+users = [
+    "peterpan@yahoo.com",
+    "annie@hotmail.com",
+    "Carl@hotmail.com",
+    "martha@gmail.com",
+    "cassie@yahoo.com",
+    "Josue@hotmail.com",
+    "John@hotmail.com"
+]
+
+# declare and initialize dictionary
+email_count = {
+    'gmail': 0,
+    'hotmail': 0,
+    'yahoo': 0
+}
+
+print(f"original dictionary {email_count}")
+
+# loop through the list
+for u in users:
+    if 'gmail' in u:
+        email_count['gmail'] += 1
+    if 'hotmail' in u:
+        email_count['hotmail'] += 1
+    if 'yahoo' in u:
+        email_count['yahoo'] += 1
+
+print(f"updated dictionary {email_count}")
 
 
 
