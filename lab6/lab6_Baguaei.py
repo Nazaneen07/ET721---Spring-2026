@@ -70,4 +70,35 @@ print(f"The area of rectangle 2= {rectangle2.perimeter()}")
 # draw rectangle 
 # rectangle2.drawRectangle()
 
-print("\n EXERCISE")
+print("\n ---- EXERCISE: Bank Account Class ")
+
+
+class BankAccount(object):
+    def __init__(self, account_number, account_holder):
+        self.account_number = account_number
+        self.account_holder = account_holder
+        self.balance_amount = 250.50
+    
+    #method to deposit money into the account
+    def deposit(self, amount):
+        self.balance_amount += amount
+    
+    #method to withdraw money from the account
+    def withdraw(self, amount):
+        if self.balance_amount >= amount:
+            self.balance_amount -= amount
+        else:
+            print("Insufficient balance. Cannot withdraw")
+    
+    #method to print the balance of the account
+    def balance(self):
+        print(f"Final balance $ {self.balance_amount}")
+
+# Creating an instance of the BankAccount class
+useraccount = BankAccount(123456789, "Student's name")
+
+# Demonstrating deposits and withdrawals
+useraccount.withdraw(700)
+useraccount.deposit(1000)
+useraccount.withdraw(500)
+useraccount.balance()
