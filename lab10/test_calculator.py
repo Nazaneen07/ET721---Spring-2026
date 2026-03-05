@@ -3,7 +3,7 @@ Nazaneen Baguaei,
 March 3, 2026
 lab10, unit tetsing using pytest
 """
-from calculator import add, subtract, divide
+from calculator import add, subtract, divide, validate_password, is_even
 import pytest
 
 
@@ -49,3 +49,16 @@ def test_is_even(n, expected):
 
 # lab exercise 4 
 # create a parametrized test for exercise 2 
+@pytest.mark.parametrize(
+    "password, expected" ,
+    [
+        ("peterpan", True),
+        ("peter pan", False),
+        ("peter#pan", False),
+        ("peter%pan", False),
+        ("peter$pan", True),
+        ("pan", False)
+    ]
+)
+def test_validate_password(password, expected):
+    assert validate_password(password) == expected
