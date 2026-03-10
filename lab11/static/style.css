@@ -1,0 +1,9 @@
+*{box-sizing: border-box;}
+.title{text-align: center; color: magenta;}
+.subtitle{
+    padding: 1rem; 
+    text-align: center; 
+    background-color: rgb(179, 207, 230);}
+img{width: 100%; display: inline-block}
+.instock{color: green}
+.outstock{color: red;}
