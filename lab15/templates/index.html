@@ -18,7 +18,7 @@
         <div>
             <label>
                 Price:
-                <input type="number" id="Price" required>
+                <input type="number" id="price" required>
             </label>
         </div>
 
@@ -29,10 +29,35 @@
         <p id="response"></p>
     </form>
 
+
+    <!-- LOADING ITEM-->
+    <section>
+        <hr>
+        <h2>ALL ITEMS</h2>
+        <button onclick="loaditems()">LOAD ITEMS</button>
+
+
+        <ul id="itemlist"> </ul>
+
+       <!-- TABLE TO UPDATE AN ITEM NAME AND PRICE -->
+        <section id="updatesection" style="display: none;">
+            <h3>Updated item</h3>
+            <input type="hidden" id="updateID">
+            <label>
+                Name: <input type="text" id="updateName">
+            </label>
+
+            <label>
+                Price: <input type="text" id="updatePrice">
+            </label>
+
+            <button onclick="updateItem()">SAVE UPDATE</button>
+        </section>
+    </section>
     <script>
         document.querySelector("#itemform").addEventListener("submit", async function(e){
             // prevent the form to clear the data after submission 
-            e.preentDefault()
+            e.preventDefault()
 
             // collect values from the form
             const name = document.querySelector("#name").value 
@@ -47,7 +72,7 @@
                     body : JSON.stringify({name: name, price: Number(price)})
                 } )
 
-                // testing = pring the response
+                // testing = print the response
                 const data = await res.json()
                 document.querySelector('#response').innerHTML = "Response: " + JSON.stringify(data)
 
@@ -55,7 +80,59 @@
                 document.querySelector('#response').innerHTML = "Response: ERROR" + error 
             }
         })
-    </script>
 
+        // LOADING ITEMS
+        async function loaditems(){
+            const res = await fetch("http://127.0.0.1:5000/items")
+            const data = await res.json()
+
+            // collect the element to print all items
+            const list = document.querySelector("#itemlist")
+            list.innerHTML = ""
+
+            // use a loop to place each item in the json data to a list 
+            for (const id in data){
+                const item = data[id]
+
+                const li = document.createElement("li")
+                li.innerHTML = `ID = ${id} | Name = ${item.name} | Price = ${item.price}
+                <button onclick = "showupdateform('${id}', '${item.name}', '${item.price}')">Update</button>
+                <button onclick = "deleteitem('${id}')">Delete</button>
+                `
+                list.appendChild(li)
+            }
+        }
+
+        function showupdateform(id, name, price){
+            document.querySelector("#updatesection").style.display = "block"
+            document.querySelector("#updateID").value = id
+            document.querySelector("#updateName").value = name
+            document.querySelector("#updatePrice").value = price
+        }
+
+        // function to update price and name of an item
+        async function updateItem(){
+            const id = document.querySelector("#updateID").value
+            const name = document.querySelector("#updateName").value
+            const price = document.querySelector("#updatePrice").value
+
+            const res = await fetch(`http://127.0.0.1:5000/items/${id}`, {
+                method: "PUT",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({name: name, price: Number(price)})
+            })
+
+            const data = await res.json()
+            loaditems()
+        }
+
+        // function to remove an item
+        async function deleteitem(id){
+            const res = await fetch(`http://127.0.0.1:5000/items/${id}`, {
+                method: "DELETE",
+            })
+            loaditems()
+        }
+    </script>
 </body>
 </html>
