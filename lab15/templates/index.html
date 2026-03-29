@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Item</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h2>Create Item by Nazaneen Baguaei</h2>
@@ -122,8 +123,10 @@
                 body: JSON.stringify({name: name, price: Number(price)})
             })
 
-            const data = await res.json()
-            loaditems()
+            const html = await res.text()
+            document.open()
+            document.write(html)
+            document.close()
         }
 
         // function to remove an item
@@ -131,7 +134,10 @@
             const res = await fetch(`http://127.0.0.1:5000/items/${id}`, {
                 method: "DELETE",
             })
-            loaditems()
+            const html = await res.text()
+            document.open()
+            document.write(html)
+            document.close()
         }
     </script>
 </body>

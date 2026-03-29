@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><title>Delete Item</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Item</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
-    <h1>Item Deleted</h1>
-    <p>ID: {{item_id}}</p>
-    <p>Deleted Value: {{ deleted_item }}</p> 
+    <div class="container">
+        <p class="author">By Nazaneen Baguaei</p>
+        <h1>Item Deleted</h1>
+        <p>ID: {{ item_id }}</p>
+        <p>Deleted Value: {{ deleted_item }}</p>
+        <a href="/">Back to Home</a>
+    </div>
 </body>
 </html>
