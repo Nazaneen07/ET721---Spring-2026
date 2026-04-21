@@ -1,0 +1,75 @@
+* { box-sizing: border-box; }
+img { width: 100%; display: block; }
+body { font-family: Arial; padding: 1.5rem; }
+
+.title {
+    text-align: center;
+    color: #3898db;
+}
+
+#uploadForm {
+    background-color: rgb(240, 250, 255);
+    width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+#imageInput, .btnupload {
+    font-size: 1.2rem;
+    padding: 1rem;
+    color: rgb(70, 70, 70);
+}
+
+#imageInput::file-selector-button, .btnupload {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+#imageInput::file-selector-button {
+    background-color: #3898db;
+}
+
+.btnupload {
+    background-color: darkblue;
+}
+
+#imageInput::file-selector-button:hover, .btnupload:hover {
+    background-color: crimson;
+}
+
+/* FIX: removed duplicate #messege (typo) — keeping only #message */
+#message {
+    text-align: center;
+    font-size: 1.1rem;
+    color: rgb(70, 70, 70);
+    font-style: italic;
+}
+
+/* FIX: removed duplicate — keeping one .subtitle */
+.subtitle {
+    color: darkblue;
+}
+
+/* FIX: removed duplicate — keeping one .gallery with corrected spelling */
+.gallery {
+    display: flex;        /* FIX: was 'felx' */
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* FIX: removed duplicate — keeping one .card */
+.card {
+    width: 300px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
