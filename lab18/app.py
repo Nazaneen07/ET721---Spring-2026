@@ -36,7 +36,7 @@ def login():
         conn.close()
 
         if user:
-            session['username'] = user['email']  # ✅ Fixed
+            session['username'] = user['email']
             return redirect(url_for('dashboard'))
         else:
             flash("Invalid email or password")
@@ -67,7 +67,6 @@ def signup():
 
         try:
             cursor.execute(""" INSERT INTO users (username, email, password) VALUES (?,?,?)""", (username, email, password))
-
             conn.commit()
             flash("Account created successfully!")
             return redirect(url_for('login'))
